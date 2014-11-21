@@ -83,7 +83,9 @@ class smiItem(object):
 		# 4) replace "<br>" with '\n';
 		# self.contents = re.sub(r'(<br>)+', '\n', self.contents, flags=re.IGNORECASE)
 		self.contents = re.sub(r'(<br>)+', '\n', self.contents)
-		# 5) find all tags
+		# 5) replace "&#39;" with ';
+		self.contents = re.sub(r'&#39;+', '\'', self.contents)
+		# 6) find all tags
 		fndx = self.contents.find('<')
 		if fndx >= 0:
 			contents = self.contents
